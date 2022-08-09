@@ -7,7 +7,6 @@ const formatHouse = ({
   price,
   img,
   city,
-  condition,
 }) => ({
   id,
   title,
@@ -15,18 +14,10 @@ const formatHouse = ({
   price,
   img,
   city: city.title,
-  condition: condition.title,
 });
 
 const fetchAll = async () => {
   const response = await fetch(`${serverAddress}/houses?_expand=city`);
-  const houses = await response.json();
-
-  return houses.map(formatHouse);
-};
-
-const fetchAllFormated = async () => {
-  const response = await fetch(`${serverAddress}/houses?_expand=condition`);
   const houses = await response.json();
 
   return houses.map(formatHouse);
@@ -42,7 +33,6 @@ const remove = async (id) => {
 
 const HousesService = {
   fetchAll,
-  fetchAllFormated,
   remove,
 };
 
