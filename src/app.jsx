@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import HousesService from 'services/house-service';
 import { CupCard } from './components';
 
@@ -22,36 +22,39 @@ const App = () => {
   };
 
   return (
-    <Box sx={{
-      display: 'flex',
-      gap: { xs: 4, xxl: 0 },
-      pt: 11,
-      px: 2,
-    }}
-    >
-      <Grid container spacing={2}>
-        {houses.map(({
-          id,
-          title,
-          description,
-          city,
-          condition,
-          price,
-          img,
-        }) => (
-          <Grid key={id} item xs={12} sm={6} md={4} lg={3} xl={2.4}>
-            <CupCard
-              title={title}
-              description={description}
-              img={img}
-              city={city}
-              condition={condition}
-              price={price}
-              onDelete={() => deleteItem(id)}
-            />
-          </Grid>
-        ))}
-      </Grid>
+    <Box display="flex">
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        pt: 2,
+        px: 2,
+      }}
+      >
+        <Box>
+          {houses.map(({
+            id,
+            title,
+            description,
+            city,
+            condition,
+            price,
+            img,
+          }) => (
+            <Box key={id} item mb={5}>
+              <CupCard
+                title={title}
+                description={description}
+                img={img}
+                city={city}
+                condition={condition}
+                price={price}
+                onDelete={() => deleteItem(id)}
+              />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+      <Box>hahah</Box>
     </Box>
   );
 };

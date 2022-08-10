@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Image from './image';
 import TypographyLimited from './typography-limited';
 
-const CupCard = ({
+const HouseCard = ({
   title,
   img,
   description,
@@ -20,13 +20,18 @@ const CupCard = ({
   onDelete,
 }) => (
   <Card sx={{
-    display: 'flex', flexDirection: 'column', height: '100%', position: 'relative',
+    display: 'flex', height: '200px', width: '700px',
   }}
   >
-    <Box sx={{ position: 'relative', width: '100%', pt: '95%' }}>
-      <Image src={img} sx={{ position: 'absolute', top: 0, left: 0 }} />
+    <Box sx={{ position: 'relative', width: '100%' }}>
+      <Image
+        src={img}
+        sx={{
+          width: '200px', height: '200px', objectFit: 'cover',
+        }}
+      />
     </Box>
-    <CardContent sx={{ p: 2, flexGrow: 1 }}>
+    <CardContent sx={{ p: 2 }}>
 
       <Box sx={{
         display: 'flex',
@@ -56,4 +61,4 @@ const CupCard = ({
   </Card>
 );
 
-export default CupCard;
+export default HouseCard;
