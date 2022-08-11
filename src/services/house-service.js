@@ -6,21 +6,35 @@ const formatHouse = ({
   description,
   price,
   img,
-  city,
+  // city,
 }) => ({
   id,
   title,
   description,
   price,
   img,
-  city: city.title,
+  // city: city.title,
 });
 
 const fetchAll = async () => {
-  const response = await fetch(`${serverAddress}/houses?_expand=city`);
+  const response = await fetch(`${serverAddress}/houses`);
   const houses = await response.json();
 
   return houses.map(formatHouse);
+};
+
+const create = async (houseProps) => {
+  const response = await fetch(`${serverAddress}/houses`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(houseProps),
+  });
+
+  const house = await response.json();
+
+  return house;
 };
 
 const remove = async (id) => {
@@ -33,6 +47,7 @@ const remove = async (id) => {
 
 const HousesService = {
   fetchAll,
+  create,
   remove,
 };
 

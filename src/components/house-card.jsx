@@ -14,24 +14,23 @@ const HouseCard = ({
   title,
   img,
   description,
-  city,
+  // city,
   price,
-  condition,
   onDelete,
 }) => (
   <Card sx={{
-    display: 'flex', height: '200px', width: '700px',
+    display: 'flex', height: '250px',
   }}
   >
-    <Box sx={{ position: 'relative', width: '100%' }}>
+    <Box sx={{ position: 'relative' }}>
       <Image
         src={img}
-        sx={{
-          width: '200px', height: '200px', objectFit: 'cover',
-        }}
       />
     </Box>
-    <CardContent sx={{ p: 2 }}>
+    <CardContent sx={{
+      p: 2, display: 'flex', flexDirection: 'column', alignItems: 'space-between',
+    }}
+    >
 
       <Box sx={{
         display: 'flex',
@@ -42,9 +41,8 @@ const HouseCard = ({
         <Typography variant="h5" component="div">{title}</Typography>
         <Typography variant="h6" component="div">{`${price} €`}</Typography>
       </Box>
-      <Typography variant="subtitle" component="div" sx={{ mb: 2 }}>{city}</Typography>
-      <Typography variant="subtitle" component="div" sx={{ mb: 2 }}>{condition}</Typography>
-      <TypographyLimited variant="body2">{description}</TypographyLimited>
+      {/* <Typography variant="subtitle" component="div" sx={{ mb: 2 }}>{city}</Typography> */}
+      <TypographyLimited>{description}</TypographyLimited>
       <Box width="100%" display="flex" justifyContent="center" mt={2}>
         <IconButton
           sx={{

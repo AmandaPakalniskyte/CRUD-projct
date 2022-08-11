@@ -1,33 +1,47 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
 import HousesService from 'services/house-service';
-import { CupCard } from './components';
+import FormCard from 'components/form';
+import HouseCard from 'components/house-card';
 
 const App = () => {
   const [houses, setHouses] = React.useState([]);
 
-  React.useEffect(() => {
-    (async () => {
-      const fetchedHouses = await HousesService.fetchAll();
-      setHouses(fetchedHouses);
-    })();
-  }, []);
-
-  const deleteItem = async (id) => {
-    const itemDeleted = await HousesService.remove(id);
-    if (itemDeleted) {
-      const fetchedHouses = await HousesService.fetchAll();
-      setHouses(fetchedHouses);
-    }
+  const fetchAllHouses = async () => {
+    const fetchedHouses = await HousesService.fetchAll();
+    setHouses(fetchedHouses);
   };
 
+  const createHouse = async (houseProps) => {
+    await HousesService.create(houseProps);
+    await fetchAllHouses();
+  };
+
+  const deleteHouse = async (id) => {
+    await HousesService.remove(id);
+    fetchAllHouses();
+  };
+
+  React.useEffect(() => {
+    fetchAllHouses();
+  }, []);
+
   return (
-    <Box display="flex">
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      px={10}
+      py={5}
+      sx={{
+        backgroundColor: '#181a1a',
+      }}
+    >
+      <FormCard onSubmit={createHouse} />
       <Box sx={{
+        width: '60%',
         display: 'flex',
         flexDirection: 'column',
-        pt: 2,
-        px: 2,
+
       }}
       >
         <Box>
@@ -35,26 +49,26 @@ const App = () => {
             id,
             title,
             description,
-            city,
-            condition,
+            // city,
+            // condition,
             price,
             img,
           }) => (
-            <Box key={id} item mb={5}>
-              <CupCard
+            <Box key={id} mb={5}>
+              <HouseCard
                 title={title}
                 description={description}
                 img={img}
-                city={city}
-                condition={condition}
+                // city={city}
+                // condition={condition}
                 price={price}
-                onDelete={() => deleteItem(id)}
+                onDelete={() => deleteHouse(id)}
               />
             </Box>
           ))}
         </Box>
       </Box>
-      <Box>hahah</Box>
+
     </Box>
   );
 };
