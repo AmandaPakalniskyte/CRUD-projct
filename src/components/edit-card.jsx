@@ -1,7 +1,10 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Typography, Button, MenuItem } from '@mui/material';
+import {
+  Typography,
+  Button, MenuItem,
+  Box,
+  TextField,
+} from '@mui/material';
 import HousesService from 'services/house-service';
 
 const EditCard = ({
@@ -47,12 +50,15 @@ const EditCard = ({
       borderRadius={1}
       px={5}
       py={6}
-      sx={{
-        backgroundColor: 'white',
-      }}
+      sx={(theme) => ({ backgroundColor: theme.palette.common.white })}
     >
       <Typography variant="h4" pb={6}>Pakeisti duomenis</Typography>
-      <Box display="flex" flexDirection="column" width="100%" gap={3}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        width="100%"
+        gap={3}
+      >
         <TextField
           variant="filled"
           width="100%"

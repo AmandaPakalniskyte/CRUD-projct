@@ -21,7 +21,9 @@ const HouseCard = ({
   onEdit,
 }) => (
   <Card sx={{
-    display: 'flex', height: '250px', alignSelf: 'center',
+    display: 'flex',
+    height: '250px',
+    alignSelf: 'center',
   }}
   >
     <Box sx={{ position: 'relative' }}>
@@ -30,10 +32,11 @@ const HouseCard = ({
       />
     </Box>
     <CardContent sx={{
-      display: 'flex', flexDirection: 'column', width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
     }}
     >
-
       <Box sx={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -48,9 +51,7 @@ const HouseCard = ({
       <Box display="flex" justifyContent="flex-end">
         <Box display="flex" justifyContent="center" mt={2}>
           <IconButton
-            sx={{
-              color: 'black',
-            }}
+            sx={(theme) => ({ color: theme.palette.common.black })}
             size="large"
             onClick={onDelete}
           >
@@ -59,9 +60,7 @@ const HouseCard = ({
         </Box>
         <Box display="flex" justifyContent="center" mt={2}>
           <IconButton
-            sx={{
-              color: 'black',
-            }}
+            sx={(theme) => ({ color: theme.palette.common.black })}
             size="large"
             onClick={onEdit}
           >

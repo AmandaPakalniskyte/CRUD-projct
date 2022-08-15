@@ -51,14 +51,10 @@ const App = () => {
       justifyContent="space-between"
       px={10}
       py={5}
-      sx={{
-        backgroundColor: '#181a1a',
-      }}
+      sx={(theme) => ({ background: theme.palette.background.default })}
     >
-
       <FormCard
         onSubmit={createHouse}
-
       />
       <Modal open={modalOpen} onClose={closeModal}>
         <Box
@@ -79,7 +75,6 @@ const App = () => {
         width: '60%',
         display: 'flex',
         flexDirection: 'column',
-
       }}
       >
         <Box>
@@ -105,7 +100,6 @@ const App = () => {
           ))}
         </Box>
       </Box>
-
     </Box>
   );
 };

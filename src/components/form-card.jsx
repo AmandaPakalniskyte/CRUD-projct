@@ -37,7 +37,7 @@ const FormCard = ({
     <Box
       onSubmit={handleSubmit}
       position="sticky"
-      top={100}
+      top={40}
       component="form"
       width="35%"
       display="flex"
@@ -48,12 +48,7 @@ const FormCard = ({
       borderRadius={1}
       px={5}
       py={6}
-      sx={{
-        backgroundColor: 'white',
-      }}
-    // sx={{
-    //   '& .MuiTextField-root': { m: 1, width: '200px' },
-    // }}
+      sx={(theme) => ({ backgroundColor: theme.palette.common.white })}
     >
       <Typography variant="h4" pb={6}>Pildyti namų sąrašą</Typography>
       <Box display="flex" flexDirection="column" width="100%" gap={3}>
