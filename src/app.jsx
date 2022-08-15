@@ -73,11 +73,13 @@ const App = () => {
       </Modal>
       <Box sx={{
         width: '60%',
-        display: 'flex',
-        flexDirection: 'column',
       }}
       >
-        <Box>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column-reverse',
+        }}
+        >
           {houses.map(({
             id,
             title,

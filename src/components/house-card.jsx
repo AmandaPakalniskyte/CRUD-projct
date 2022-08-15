@@ -34,6 +34,7 @@ const HouseCard = ({
     <CardContent sx={{
       display: 'flex',
       flexDirection: 'column',
+      justifyContent: 'space-between',
       width: '100%',
     }}
     >

@@ -26,6 +26,22 @@ const FormCard = ({
     });
   };
 
+  // React.useEffect(() => {
+  //   setTitle('');
+  // }, []);
+
+  // const clearFields = () => {
+  //   setDescription('');
+  // };
+
+  const clearFields = () => {
+    setTitle('');
+    setPrice('');
+    setCity('');
+    setDescription('');
+    setImg('');
+  };
+
   React.useEffect(() => {
     (async () => {
       const fethedCities = await HousesService.fetchCities();
@@ -92,8 +108,21 @@ const FormCard = ({
           onChange={(event) => setImg(event.target.value)}
         />
       </Box>
-      <Box mt={5}>
-        <Button variant="contained" type="submit">Išsaugoti</Button>
+      <Box mt={5} width="100%" display="flex" justifyContent="space-between">
+        <Button
+          variant="contained"
+          sx={(theme) => ({ backgroundColor: theme.palette.background.default })}
+          onClick={() => clearFields()}
+        >
+          Išvalyti laukus
+        </Button>
+        <Button
+          variant="contained"
+          type="submit"
+          sx={(theme) => ({ backgroundColor: theme.palette.background.default })}
+        >
+          Išsaugoti
+        </Button>
       </Box>
     </Box>
   );
