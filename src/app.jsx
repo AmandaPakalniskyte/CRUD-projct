@@ -1,12 +1,19 @@
 import * as React from 'react';
-import { Box } from '@mui/material';
+import { Box, Modal } from '@mui/material';
 import HousesService from 'services/house-service';
 import FormCard from 'components/form-card';
 import HouseCard from 'components/house-card';
+import EditCard from 'components/edit-card';
 
 const App = () => {
   const [houses, setHouses] = React.useState([]);
+  const [houseBeingEdited, setHouseBeingEdited] = React.useState(null);
+  const [modalOpen, setModalOpen] = React.useState(false);
 
+  const closeModal = () => {
+    setModalOpen(false);
+    setHouseBeingEdited(null);
+  };
   const fetchAllHouses = async () => {
     const fetchedHouses = await HousesService.fetchAll();
     setHouses(fetchedHouses);
@@ -17,7 +24,19 @@ const App = () => {
     await fetchAllHouses();
   };
 
-  const deleteHouse = async (id) => {
+  const editHouse = (id) => {
+    const foundHouse = houses.find((house) => house.id === id);
+    setHouseBeingEdited(foundHouse);
+    setModalOpen(true);
+  };
+
+  const updateHouse = async (houseProps) => {
+    await HousesService.update(houseBeingEdited.id, houseProps);
+    await fetchAllHouses();
+    closeModal();
+  };
+
+  const removeHouse = async (id) => {
     await HousesService.remove(id);
     fetchAllHouses();
   };
@@ -36,7 +55,26 @@ const App = () => {
         backgroundColor: '#181a1a',
       }}
     >
-      <FormCard onSubmit={createHouse} />
+
+      <FormCard
+        onSubmit={createHouse}
+
+      />
+      <Modal open={modalOpen} onClose={closeModal}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <EditCard
+            onSubmit={updateHouse}
+            initValues={houseBeingEdited}
+          />
+        </Box>
+      </Modal>
       <Box sx={{
         width: '60%',
         display: 'flex',
@@ -60,7 +98,8 @@ const App = () => {
                 img={img}
                 city={city}
                 price={price}
-                onDelete={() => deleteHouse(id)}
+                onDelete={() => removeHouse(id)}
+                onEdit={() => editHouse(id)}
               />
             </Box>
           ))}

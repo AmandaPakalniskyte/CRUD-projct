@@ -4,15 +4,16 @@ import TextField from '@mui/material/TextField';
 import { Typography, Button, MenuItem } from '@mui/material';
 import HousesService from 'services/house-service';
 
-const FormCard = ({
+const EditCard = ({
   onSubmit,
+  initValues,
 }) => {
   const [cities, setCities] = React.useState([]);
-  const [title, setTitle] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const [price, setPrice] = React.useState('');
-  const [img, setImg] = React.useState('');
-  const [description, setDescription] = React.useState('');
+  const [title, setTitle] = React.useState(initValues?.title ?? '');
+  const [city, setCity] = React.useState(initValues?.cityId ?? '');
+  const [price, setPrice] = React.useState(initValues?.price ?? '');
+  const [img, setImg] = React.useState(initValues?.img ?? '');
+  const [description, setDescription] = React.useState(initValues?.description ?? '');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,26 +37,21 @@ const FormCard = ({
   return (
     <Box
       onSubmit={handleSubmit}
-      position="sticky"
-      top={100}
       component="form"
-      width="35%"
       display="flex"
       flexDirection="column"
       alignItems="center"
       border="solid 1px black"
       height="100%"
+      width="500px"
       borderRadius={1}
       px={5}
       py={6}
       sx={{
         backgroundColor: 'white',
       }}
-    // sx={{
-    //   '& .MuiTextField-root': { m: 1, width: '200px' },
-    // }}
     >
-      <Typography variant="h4" pb={6}>Pildyti namų sąrašą</Typography>
+      <Typography variant="h4" pb={6}>Pakeisti duomenis</Typography>
       <Box display="flex" flexDirection="column" width="100%" gap={3}>
         <TextField
           variant="filled"
@@ -98,10 +94,10 @@ const FormCard = ({
         />
       </Box>
       <Box mt={5}>
-        <Button variant="contained" type="submit">Išsaugoti</Button>
+        <Button variant="contained" type="submit">Keisti</Button>
       </Box>
     </Box>
   );
 };
 
-export default FormCard;
+export default EditCard;

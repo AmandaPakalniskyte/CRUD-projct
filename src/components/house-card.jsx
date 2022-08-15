@@ -18,6 +18,7 @@ const HouseCard = ({
   city,
   price,
   onDelete,
+  onEdit,
 }) => (
   <Card sx={{
     display: 'flex', height: '250px', alignSelf: 'center',
@@ -29,7 +30,7 @@ const HouseCard = ({
       />
     </Box>
     <CardContent sx={{
-      display: 'flex', flexDirection: 'column',
+      display: 'flex', flexDirection: 'column', width: '100%',
     }}
     >
 
@@ -62,7 +63,7 @@ const HouseCard = ({
               color: 'black',
             }}
             size="large"
-            onClick={onDelete}
+            onClick={onEdit}
           >
             <ModeEditIcon />
           </IconButton>

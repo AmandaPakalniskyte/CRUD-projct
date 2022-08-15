@@ -39,6 +39,20 @@ const create = async (houseProps) => {
   return house;
 };
 
+const update = async (id, houseProps) => {
+  const response = await fetch(`${serverAddress}/houses/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(houseProps),
+  });
+
+  const house = await response.json();
+
+  return house;
+};
+
 const remove = async (id) => {
   await fetch(`http://localhost:8005/houses/${id}`, {
     method: 'DELETE',
@@ -57,6 +71,7 @@ const fetchCities = async () => {
 const HousesService = {
   fetchAll,
   create,
+  update,
   remove,
   fetchCities,
 };
