@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
 import HousesService from 'services/house-service';
-import FormCard from 'components/form';
+import FormCard from 'components/form-card';
 import HouseCard from 'components/house-card';
 
 const App = () => {
@@ -49,8 +49,7 @@ const App = () => {
             id,
             title,
             description,
-            // city,
-            // condition,
+            city,
             price,
             img,
           }) => (
@@ -59,8 +58,7 @@ const App = () => {
                 title={title}
                 description={description}
                 img={img}
-                // city={city}
-                // condition={condition}
+                city={city}
                 price={price}
                 onDelete={() => deleteHouse(id)}
               />

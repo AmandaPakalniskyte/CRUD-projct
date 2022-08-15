@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Typography, Button } from '@mui/material';
-// import HousesService from 'services/house-service';
+import { Typography, Button, MenuItem } from '@mui/material';
+import HousesService from 'services/house-service';
 
 const FormCard = ({
   onSubmit,
@@ -11,9 +11,9 @@ const FormCard = ({
 //   color,
 //   initValues,
 }) => {
-//   const [categories, setCategories] = React.useState([]);
+  const [cities, setCities] = React.useState([]);
   const [title, setTitle] = React.useState('');
-  //   const [category, setCategory] = React.useState();
+  const [city, setCity] = React.useState('');
   const [price, setPrice] = React.useState('');
   const [img, setImg] = React.useState('');
   const [description, setDescription] = React.useState('');
@@ -23,30 +23,32 @@ const FormCard = ({
 
     onSubmit({
       title,
-      //   categoryId: category,
+      cityId: city,
       price: Number(price),
       img,
       description,
     });
   };
 
-  //   React.useEffect(() => {
-  //     (async () => {
-  //       const fethedCategories = await HousesService.fetchCategories();
-  //       setCategories(fethedCategories);
-  //     })();
-  //   }, []);
+  React.useEffect(() => {
+    (async () => {
+      const fethedCities = await HousesService.fetchCities();
+      setCities(fethedCities);
+    })();
+  }, []);
 
   return (
     <Box
       onSubmit={handleSubmit}
+      position="sticky"
+      top={100}
       component="form"
-      width="30%"
+      width="35%"
       display="flex"
       flexDirection="column"
       alignItems="center"
       border="solid 1px black"
-      height="700px"
+      height="780px"
       borderRadius={1}
       px={5}
       pt={6}
@@ -71,21 +73,20 @@ const FormCard = ({
           value={price}
           onChange={(event) => setPrice(event.target.value)}
         />
-        {/* <TextField
-          required
-          id="outlined-required"
-          label="Kategorija"
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
+        <TextField
+          select
+          label="Miestas"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
         >
-          {categories.map(({ id, title: categoryTitle }) => (
-            <MenuItem key={id} value={id}>{categoryTitle}</MenuItem>
+          {cities.map(({ id, title: cityTitle }) => (
+            <MenuItem key={id} value={id}>{cityTitle}</MenuItem>
           ))}
-        </TextField> */}
+        </TextField>
         <TextField
           label="Aprašymas"
           multiline
-          rows={7}
+          rows={5}
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />

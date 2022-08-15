@@ -7,6 +7,7 @@ import {
   IconButton,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import Image from './image';
 import TypographyLimited from './typography-limited';
 
@@ -14,12 +15,12 @@ const HouseCard = ({
   title,
   img,
   description,
-  // city,
+  city,
   price,
   onDelete,
 }) => (
   <Card sx={{
-    display: 'flex', height: '250px',
+    display: 'flex', height: '250px', alignSelf: 'center',
   }}
   >
     <Box sx={{ position: 'relative' }}>
@@ -28,7 +29,7 @@ const HouseCard = ({
       />
     </Box>
     <CardContent sx={{
-      p: 2, display: 'flex', flexDirection: 'column', alignItems: 'space-between',
+      display: 'flex', flexDirection: 'column',
     }}
     >
 
@@ -41,19 +42,31 @@ const HouseCard = ({
         <Typography variant="h5" component="div">{title}</Typography>
         <Typography variant="h6" component="div">{`${price} €`}</Typography>
       </Box>
-      {/* <Typography variant="subtitle" component="div" sx={{ mb: 2 }}>{city}</Typography> */}
-      <TypographyLimited>{description}</TypographyLimited>
-      <Box width="100%" display="flex" justifyContent="center" mt={2}>
-        <IconButton
-          sx={{
-
-            color: 'black',
-          }}
-          size="large"
-          onClick={onDelete}
-        >
-          <DeleteIcon />
-        </IconButton>
+      <Typography mt={1}>{city}</Typography>
+      <TypographyLimited mt={2}>{description}</TypographyLimited>
+      <Box display="flex" justifyContent="flex-end">
+        <Box display="flex" justifyContent="center" mt={2}>
+          <IconButton
+            sx={{
+              color: 'black',
+            }}
+            size="large"
+            onClick={onDelete}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Box>
+        <Box display="flex" justifyContent="center" mt={2}>
+          <IconButton
+            sx={{
+              color: 'black',
+            }}
+            size="large"
+            onClick={onDelete}
+          >
+            <ModeEditIcon />
+          </IconButton>
+        </Box>
       </Box>
     </CardContent>
   </Card>

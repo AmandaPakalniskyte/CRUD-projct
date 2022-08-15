@@ -37,18 +37,13 @@
       "price": 200000
     },
     {
-      "title": "sss",
-      "price": 0,
-      "img": "",
-      "description": "",
-      "id": "tfVJOVi"
-    },
-    {
-      "title": "e4ret",
-      "price": 0,
-      "img": "",
-      "description": "",
-      "id": "2OGaxU2"
+      "id": "815C5D64-820D-2DCD-10AA-59EE2D0BC780",
+      "title": "Rasa",
+      "description": "Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam",
+      "cityId": 1,
+      "conditionId": 11,
+      "img": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80",
+      "price": 800000
     }
   ],
   "cities": [
