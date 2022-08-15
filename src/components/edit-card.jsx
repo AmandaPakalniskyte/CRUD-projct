@@ -100,7 +100,7 @@ const EditCard = ({
         />
       </Box>
       <Box mt={5}>
-        <Button variant="contained" type="submit">Keisti</Button>
+        <Button variant="contained" type="submit" sx={(theme) => ({ backgroundColor: theme.palette.background.default })}>Keisti</Button>
       </Box>
     </Box>
   );
